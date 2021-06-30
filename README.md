@@ -11,12 +11,13 @@ random.middle() produces only male names
 
 ``` js
   var random = require('random-name-redux')
-  console.log(random())
+  var isMale = true // true creates male first name, false creates female first name
+  console.log(random(isMale))
 
-  //provides first, middle, and last names.
+  //provides first and last names.
 
-  console.log(random.first())
-  console.log(random.middle())
+  console.log(random.firstFemale())
+  console.log(random.firstMale())
   console.log(random.last())
 
   //also, random place name!

@@ -1,7 +1,7 @@
 
-var names = require('./names.json')
-var first = require('./first-names.json')
-var middle = require('./middle-names.json')
+var last = require('./last-names.json')
+var firstFemale = require('./first-names-female.json')
+var firstMale = require('./first-names-male.json')
 var place = require('./places.json')
 
 function r(names) {
@@ -10,18 +10,22 @@ function r(names) {
   }
 }
 
-var random = module.exports = function () {
-  return random.first() + ' ' +random.last()
+var random = module.exports = function (isMale) {
+  if (!!isMale) {
+    return random.firstMale() + ' ' + random.last();
+  }
+  
+  return random.firstFemale() + ' ' + random.last();
 }
 
-random.first   = r(first)
-random.last    = r(names)
-random.middle  = r(middle)
-random.place   = r(place)
+random.firstFemale  = r(firstFemale)
+random.firstMale    = r(firstMale)
+random.last         = r(last)
+random.place        = r(place)
 
 if(require.main === module) {
   var l = process.argv[2] || 1
   while (l--)
-    console.log(random.first(), '.', random.middle(), '.', random.last(), ',', random.place());
+    console.log(random.firstMale(), '.', random.firstFemale(), '.', random.last(), ',', random.place());
 }
   
