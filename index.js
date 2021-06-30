@@ -19,10 +19,9 @@ random.last    = r(names)
 random.middle  = r(middle)
 random.place   = r(place)
 
-if(!module.parent) {
-  var l = process.argv[2] || 10
+if(require.main === module) {
+  var l = process.argv[2] || 1
   while (l--)
-    console.log(random.first(), '.', random.middle(), '.', random.last()
-    , ',', random.place())
+    console.log(random.first(), '.', random.middle(), '.', random.last(), ',', random.place());
 }
   
